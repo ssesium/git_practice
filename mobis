@@ -1,0 +1,11 @@
+dic={"M":0,"O":0,"B":0,"I":0,"S":0}
+s=input()
+for char in s:
+    if char in dic:
+        if dic[char]==0:
+            dic[char]+=1
+if sum(dic.values())==5:
+    print("YES")
+else:
+    print("NO")
+    

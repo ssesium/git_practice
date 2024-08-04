@@ -1,0 +1,28 @@
+n,m,b=map(int,input().split())
+land=[]
+
+for a in range(n):
+    land.append(list(map(int,input().split())))
+flat_land=[height for row in land for height in row]
+min_height=min(flat_land)
+max_height=max(flat_land)
+
+min_time=float('inf')
+best_target=None
+
+for target in range(min_height,max_height+1):
+    time=0
+    summ=0
+    for i in range(n):
+        for j in range(m):
+            diff=land[i][j]-target
+            if diff>0:
+                time+=diff*2
+            elif diff<0:
+                time+=-diff
+            summ+=diff
+    if summ+b>=0:
+        if time<min_time or (time==min_time and target>best_target):
+            min_time=time
+            best_target=target
+print(" ".join(map(str,[min_time,best_target])))
